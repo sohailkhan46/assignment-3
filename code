@@ -1,0 +1,116 @@
+#include<iostream>
+#include<string>
+using namespace std;
+void Menu()
+{
+    string item[6] = {
+        "Ice Tea (price 3)",
+        "Milk Tea (price 2)",
+        "Black Tea (price 1)",
+        "Ice coffee (price 3",
+        "Milk coffee (price 2)",
+        "Black coffee (price 1)" };
+    cout << "Items\t\t" << "Prices\n";
+
+    for (int i = 0; i < 6; i++)
+    {
+        cout << item[i] << endl;
+    }
+}
+ int main()
+{
+    char sugar, answer;
+    int choice;
+    float money;
+
+    cout << "The menu that you may choose from is as below." << endl;
+    int main();
+    cout << "Would you like a cup of tea or a cup of coffee? (T/C): ";
+    cin >> answer;
+    while (cin.fail() || (answer != 'T' && answer != 't' && answer != 'C' && answer != 'c'))
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input.\nOnly answer with  T or C: ";
+        cin >> answer;
+    }
+    cout << "1 for Ice\n2 for Milk\n3 for Black\nwhich drink you want? ";
+    cin >> choice;
+    while (cin.fail() || (choice != 1 && choice != 2 && choice != 3))
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input.\nOnly answer with 1 or 2 or 3: ";
+        cin >> choice;
+    }
+    cout << "enter the money: ";
+    cin >> money;
+    while (cin.fail() || money < 1)
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+        cout << "Incorrect input.\nPlease enter the correct price.: ";
+        cin >> money;
+    }
+    switch (choice)
+    {
+    case 1:
+    {
+        money = money - 3;
+        break;
+    }
+    case 2:
+    {
+        money = money - 2;
+        break;
+    }
+    case 3:
+    {
+        money = money - 1;
+        break;
+    }
+    default:
+        break;
+    }
+    cout << "Would you like some sugar?(Y/N): ";
+    cin >> sugar;
+
+    while (cin.fail() || (sugar = 'Y' && sugar != 'y' && sugar != 'N' && sugar != 'n'))
+    {
+        cin.clear();
+        cin.ignore(1000, '\n');
+
+        cout << "Incorrect input.\nPlease try once more.: ";
+        cin >> sugar;
+    }
+    if (money >= 0)
+    {
+        if (sugar == 'Y' || sugar == 'y')
+        {
+            cout << "Here's your drink with the sugar\nAnd your change: " << money << endl;
+        }
+        else
+        {
+            cout << "Here's your drink without the sugar\nAnd your change: " << money << endl;
+        }
+    }
+    else
+    {
+        cout << "You do not have sufficient money\nYour money has been returned to you.: ";
+        if (choice == 3)
+        {
+            cout << money + 1 << endl;
+        }
+        else  if (choice == 2)
+        {
+            cout << money + 2 << endl;
+        }
+        else
+        {
+            cout << money + 3 << endl;
+        }
+    }
+
+    return 0;
+}
